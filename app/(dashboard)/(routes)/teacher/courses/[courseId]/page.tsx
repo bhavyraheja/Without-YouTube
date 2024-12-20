@@ -158,7 +158,7 @@ const CourseIdPage = async ({
                                 Resources & Attachments
                             </h2>
                         </div>
-                        <AttachmentForm
+                        <AttachmentForm 
                         initialData = {course}
                         courseId ={course.id}
                     />

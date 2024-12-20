@@ -44,7 +44,6 @@ const iconVariants = cva(
 );
 
 type backgroundVariantsProps = VariantProps<typeof backgroundVariants>;
-type iconVariantsProps = VariantProps<typeof iconVariants>;
 
 interface IconBadgeProps extends backgroundVariantsProps, IconBadgeProps
 {

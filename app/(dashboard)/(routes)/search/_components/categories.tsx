@@ -11,7 +11,6 @@ import{
 
 } from "react-icons/fc";
 import { IconType } from "react-icons";
-import { Item } from "@radix-ui/react-dropdown-menu";
 import { CategoryItem } from "./category-item";
 
 interface CategoriesProps{

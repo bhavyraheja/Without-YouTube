@@ -2,6 +2,7 @@ import Mux from "@mux/mux-node";
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
+import { isTeacher } from "@/lib/teacher";
 
 // Validate MUX environment variables
 if (!process.env.MUX_TOKEN_ID?.trim() || !process.env.MUX_TOKEN_SECRET?.trim()) {
@@ -17,7 +18,7 @@ export async function DELETE(
 ) {
     try {
         const { userId } = await auth();
-        if (!userId) {
+        if (!userId || !isTeacher(userId)) {
             return new NextResponse("Unauthorized", { status: 401 });
         }
 
@@ -71,7 +72,7 @@ export async function PATCH(
 ) {
     try {
         const { userId } = await auth();
-        if (!userId) {
+        if (!userId || !isTeacher(userId)) {
             return new NextResponse("Unauthorized", { status: 401 });
         }
 

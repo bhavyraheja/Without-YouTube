@@ -1,20 +1,12 @@
 {
-  "env": {
-      "es6": true,
-      "node": true
-  },
+  "parser": "@typescript-eslint/parser",
   "extends": [
-      "standard"
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
-  },
-  "parserOptions": {
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-  },
+  "plugins": ["@typescript-eslint"],
   "rules": {
-    "quotes": ["error", "single"]
+    "react/react-in-jsx-scope": "off"  // if using React 17 JSX Transform
   }
 }

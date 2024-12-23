@@ -1,4 +1,4 @@
-import { isTeacher } from "@/lib/teacher";
+
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 
 const f = createUploadthing();
@@ -9,8 +9,8 @@ const auth = (req: Request) => ({ userId: "fakeId" }); // Adjust as per actual i
 // Authorization Handler
 const handleAuth = () => {
   const { userId } = auth({} as Request); // Mocked `auth` function, adjust accordingly
-  const isAuthorized = isTeacher(userId);
-  if (!userId || !isAuthorized) {
+
+  if (!userId ) {
     throw new Error("Unauthorized: No userId provided");
   }
   return { userId };

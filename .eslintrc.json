@@ -1,12 +1,22 @@
 {
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"  // Ensure ESLint uses your tsconfig.json
+  },
   "extends": [
     "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "eslint:recommended"
   ],
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "react/react-in-jsx-scope": "off"  // if using React 17 JSX Transform
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
   }
 }

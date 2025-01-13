@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   images: {
     domains: [
-      "utfs.io"
+      'utfs.io'
     ]
   }
   

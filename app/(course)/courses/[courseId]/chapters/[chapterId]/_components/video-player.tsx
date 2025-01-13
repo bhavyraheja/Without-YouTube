@@ -40,15 +40,18 @@ export const VideoPlayer = ({
                     isCompleted: true,
                 })
             }
+           
             if(!nextChapterId){
                 confetti.onOpen();
             }
+           
             toast.success("Progress updated");
             router.refresh();
 
             if(nextChapterId){
                 router.push(`/courses/${courseId}/chapters/${nextChapterId}`)
             }
+            router.refresh();
 
         } catch{
             toast.error("Something went wrong");

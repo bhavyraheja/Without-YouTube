@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { File } from "lucide-react";
 import { CourseProgressButton } from "./_components/course-progress-button";
 import Certificate from "./_components/certificate";
+import QuizAttempt from "./_components/quiz-attempt";
 
 const ChapterIdPage = async ({
   params,
@@ -112,6 +113,15 @@ const ChapterIdPage = async ({
             courseTitle={course.title}
           />
         )}
+        {/* quiz */}
+        {!isLocked && !userProgress?.isCompleted && (
+          <div className="p-4">
+            <h2 className="text-2xl font-semibold mb-2">Attempt the Quiz</h2>
+            <QuizAttempt courseId={params.courseId} chapterId={params.chapterId} />
+          </div>
+        )}
+
+        
       </div>
     </div>
   );

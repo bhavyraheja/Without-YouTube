@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
 import Link from "next/link";
-import { ArrowLeft, Eye, LayoutDashboard, Video } from "lucide-react";
+import { ArrowLeft, BookOpenCheck, Eye, LayoutDashboard, Video } from "lucide-react";
 import { IconBadge } from "@/components/icon-badge";
 import { ChapterTitleForm } from "./_components/chapter-title-form";
 import { ChapterDescriptionForm } from "./_components/chapter-description-form";
@@ -11,6 +11,9 @@ import { ChapterAccessForm } from "./_components/chapter-access-form";
 import { ChapterVideoForm } from "./_components/chapter-video-form";
 import { Banner } from "@/components/banner";
 import { ChapterActions } from "./_components/chapter-actions";
+import QuizForm from "./_components/chapter-quiz";
+import QuizList from "./_components/display-quiz";
+
 
 interface ChapterIdPageProps {
   params: {
@@ -41,7 +44,11 @@ const ChapterIdPage = async ({ params }: ChapterIdPageProps) => {
       return redirect("/");
     }
 
-    const requiredFields = [chapter.title, chapter.description, chapter.videoUrl];
+    const requiredFields = [
+      chapter.title,
+      chapter.description,
+      chapter.videoUrl,
+    ];
     const completedFields = requiredFields.filter(Boolean).length;
     const totalFields = requiredFields.length;
     const completionText = `(${completedFields}/${totalFields})`;
@@ -124,6 +131,14 @@ const ChapterIdPage = async ({ params }: ChapterIdPageProps) => {
                 chapterId={params.chapterId}
               />
             </div>
+          </div>
+          <div className=" mt-16">
+            <div className="flex items-center gap-x-2">
+              <IconBadge icon={BookOpenCheck} />
+              <h2 className="text-xl">Quiz</h2>
+            </div>
+            {/* <QuizList chapterId={params.chapterId} courseId={params.courseId} /> */}
+            <QuizForm chapterId={params.chapterId} courseId={params.courseId} chapterTitle={chapter.title} />
           </div>
         </div>
       </>

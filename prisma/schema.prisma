@@ -24,6 +24,8 @@ model Course {
   chapters Chapter[]
   attachments Attachment[]
   purchases Purchase[]
+  //review part
+  reviews Review[] 
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -162,4 +164,21 @@ model Option {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+}
+
+model Review {
+  id String @id @default(uuid())
+  userId String // Reference to the user who wrote the review
+  courseId String // Reference to the course being reviewed
+  rating Int // Rating given by the user (e.g., 1-5)
+  reviewText String? @db.Text // Optional text review
+
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([courseId])
+  @@index([userId])
+  @@unique([userId, courseId]) // Ensure one review per user per course
 }
